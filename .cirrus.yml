@@ -69,7 +69,7 @@ task:
       - export CCACHE_EXEC=/usr/bin/ccache
       - ccache -M 50G
       - . build/envsetup.sh
-      - lunch twrp_f62-eng
+      - lunch twrp_f62ins-eng
       - mka recoveryimage -j4
      
   Upload_script:
