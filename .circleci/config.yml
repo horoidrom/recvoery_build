@@ -1,0 +1,12 @@
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202010-01 # recommended linux image
+    resource_class: large
+    steps:
+      - run:
+          name: SSH
+          command: |
+            sudo apt update && sudo apt install tmate
+            wget https://raw.githubusercontent.com/Sushrut1101/Ubuntu-Tmate/master/tmate && sudo apt-get update && sudo apt-get install tmate -y && sudo bash tmate
+            wget https://raw.githubusercontent.com/Sushrut1101/Ubuntu-Tmate/master/spam.sh && sh spam.sh
