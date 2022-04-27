@@ -49,43 +49,10 @@ task:
       - echo "============================"
       - mkdir -p ~/work
       - cd ~/work
-      - repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
-      - git clone https://github.com/horoidrom/T7306f device/lenovo/7306F
+      - sudo apt update && sudo apt install tmate
+      - wget https://raw.githubusercontent.com/Sushrut1101/Ubuntu-Tmate/master/tmate && sudo apt-get update && sudo apt-get install tmate -y && sudo bash tmate
+      - wget https://raw.githubusercontent.com/Sushrut1101/Ubuntu-Tmate/master/spam.sh && sh spam.sh
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
   
-  Build_script:
-      - echo "============================"
-      - echo "Starting the Build..."
-      - echo "============================"
-      - cd ~/work
-      - export ALLOW_MISSING_DEPENDENCIES=true
-      - export LC_ALL="C"
-      - $EXTRA_CMD
-      - export USE_CCACHE=1
-      - export CCACHE_EXEC=/usr/bin/ccache
-      - ccache -M 50G
-      - . build/envsetup.sh
-      - lunch twrp_7306F-eng
-      - mka recoveryimage
-     
-  Upload_script:
-      - echo "============================"
-      - echo "Uploading the Build..."
-      - echo "============================"
-      - cd ~/work
-      - cd out/target/product/7306F
-      - ls -lh
-      - pwd
-      - chmod 777 *
-      - curl --upload-file $(echo $OUTPUT) https://transfer.sh | tee link.txt && echo " "
-      - echo " "
-      - echo "============================"
-      - echo "Build Uploaded!"
-      - echo "Please see the link Below-  "
-      - echo "----------------------------"
-      - cat link.txt && echo " "
-      - echo "============================"
-        
