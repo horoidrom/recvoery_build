@@ -49,7 +49,7 @@ task:
       - echo "============================"
       - mkdir -p ~/work
       - cd ~/work
-      - repo init --depth=1 -u https://github.com/SHRP/manifest.git -b v3_10.0
+      - repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       - git clone https://github.com/horoidrom/T7306f device/lenovo/7306F
       - echo "============================"
