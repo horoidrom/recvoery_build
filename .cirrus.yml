@@ -68,7 +68,7 @@ task:
       - export CCACHE_EXEC=/usr/bin/ccache
       - ccache -M 50G
       - . build/envsetup.sh
-      - lunch omni_7306F-eng
+      - lunch twrp_7306F-eng
       - mka recoveryimage
      
   Upload_script:
