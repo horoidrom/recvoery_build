@@ -49,9 +49,9 @@ task:
       - echo "============================"
       - mkdir -p ~/work
       - cd ~/work
-      - repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+      - repo init --depth=1 -u https://github.com/SHRP/manifest.git -b v3_10.0
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
-      - git clone https://github.com/horoidrom/f62 device/samsung/f62ins
+      - git clone https://github.com/horoidrom/T7306f device/lenovo/7306F
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -63,21 +63,20 @@ task:
       - cd ~/work
       - export ALLOW_MISSING_DEPENDENCIES=true
       - export LC_ALL="C"
-      - export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
       - $EXTRA_CMD
       - export USE_CCACHE=1
       - export CCACHE_EXEC=/usr/bin/ccache
       - ccache -M 50G
       - . build/envsetup.sh
-      - lunch twrp_f62ins-eng
-      - mka recoveryimage -j4
+      - lunch omni_7306F-eng
+      - mka recoveryimage
      
   Upload_script:
       - echo "============================"
       - echo "Uploading the Build..."
       - echo "============================"
       - cd ~/work
-      - cd out/target/product/f62ins
+      - cd out/target/product/7306F
       - ls -lh
       - pwd
       - chmod 777 *
